@@ -6,17 +6,17 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-        <!-- Scripts -->
+        <style>
+            .body-bg {
+                background-color: #9921e8;
+                background-image: linear-gradient(315deg, #9921e8 0%, #5f72be 74%);
+            }
+        </style>
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body>
+    <body class="body-bg min-h-screen pt-5 md:pt-0 pb-6 px-2 md:px-0">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>

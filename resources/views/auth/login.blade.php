@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" class="w-full my-0 md:my-10 md:w-3/6 mx-auto">
             @csrf
 
             <div>
