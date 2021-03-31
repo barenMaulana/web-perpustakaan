@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->char('isbn');
             $table->char('author');
             $table->char('publisher')->default('-');
-            $table->char('responsible_person');
+            $table->char('responsible_person')->nullable();
             $table->year('publication_year');
             $table->char('publication_place');
             $table->text('description');
