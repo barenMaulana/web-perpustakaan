@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('logo.png')}}" type="image/x-icon">
     @include('includes.home.style')
     @livewireStyles
 </head>
@@ -21,7 +21,7 @@
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-4">
             <div class="pl-4 flex items-center">
                 <a class="no-underline hover:no-underline font-bold text-2xl lg:text-2xl flex items-center bg" href="#">
-                    <img src="logo.png" alt="" width="50" style="margin-top: -10px;">
+                    <img src="{{asset('logo.png')}}" alt="" width="50" style="margin-top: -10px;">
                     Books
                 </a>
             </div>
@@ -82,15 +82,15 @@
     </div>
 
     {{-- main content --}}
-    @yield('content')
+        @yield('content')
 
     <!--Footer-->
-    <footer class="bg-white ">
+    <footer class="bg-white">
         <div class="container mx-auto mt-8 px-8">
             <div class="w-full flex flex-col md:flex-row py-6">
                 <div class="flex-1 mb-6">
                     <a class="text-orange-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-                        <img src="logo.png" width="100" alt="">
+                        <img src="{{asset('logo.png')}}" width="100" alt="">
                         Books
                     </a>
                 </div>

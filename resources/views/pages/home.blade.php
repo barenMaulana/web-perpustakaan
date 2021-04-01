@@ -67,67 +67,23 @@
     
                 <div class="flex flex-wrap justify-center lg:justify-between w-full p-6 bg-gray-100">
     
-                    <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
-                        <a href="#">
-                            <div class="pt-3">
-                                <img src="img/thumb1.png" alt="" class="mx-auto" width="150">
-                            </div>
-                            <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
-                                Ciki dan tiki unggas sahabat manusia
-                            </p>
-                        </a>
-                    </div>
-                    <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
-                        <a href="#">
-                            <div class="pt-3">
-                                <img src="img/thumb6.png" alt="" class="mx-auto" width="150">
-                            </div>
-                            <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
-                                Ciki dan tiki unggas sahabat manusia
-                            </p>
-                        </a>
-                    </div>
-                    <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
-                        <a href="#">
-                            <div class="pt-3">
-                                <img src="img/thumb2.png" alt="" class="mx-auto" width="150">
-                            </div>
-                            <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
-                                Ciki dan tiki unggas sahabat manusia
-                            </p>
-                        </a>
-                    </div>
-                    <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
-                        <a href="#">
-                            <div class="pt-3">
-                                <img src="img/thumb3.png" alt="" class="mx-auto" width="150">
-                            </div>
-                            <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
-                                Ciki dan tiki unggas sahabat manusia
-                            </p>
-                        </a>
-                    </div>
-                    <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
-                        <a href="#">
-                            <div class="pt-3">
-                                <img src="img/thumb4.png" alt="" class="mx-auto" width="150">
-                            </div>
-                            <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
-                                Ciki dan tiki unggas sahabat manusia
-                            </p>
-                        </a>
-                    </div>
-                    <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
-                        <a href="#">
-                            <div class="pt-3">
-                                <img src="img/thumb5.png" alt="" class="mx-auto" width="150">
-                            </div>
-                            <p class="w-full text-gray-900 text-xs font-light md:text-xs my-4">
-                                Ciki dan tiki unggas sahabat manusia
-                            </p>
-                        </a>
-                    </div>
-    
+                    @forelse ($books as $book)
+                        <div class="bg-white rounded overflow-hidden shadow w-40 px-3 mx-4 my-4 lg:my-0 hover:shadow-xl">
+                            <a href="{{url('book-details/'.$book->id)}}">
+                                <div class="pt-3">
+                                    <img src="{{asset('storage/'.$book->cover_file_name)}}" alt="cover" class="mx-auto" width="150">
+                                </div>
+                                <p class="w-full text-gray-900 text-xs font-light md:text-xs h-10 my-2 overflow-auto">
+                                    {{$book->title}}
+                                </p>
+                            </a>
+                        </div>     
+                    @empty
+                        <h2 class="w-full my-2 text-xl font-black leading-tight text-center text-gray-500">
+                            Oops..buku nya lagi kosong
+                        </h2>
+                    @endforelse
+                   
                 </div>
             </div>
         </section>

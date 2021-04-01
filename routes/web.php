@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookController;
 
 Route::get('/', [HomeController::class,'index'])->name('/');
+Route::get('/book-details/{id}', [HomeController::class,'show']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard',[DashboardController::Class,'index'])->name('dashboard');
