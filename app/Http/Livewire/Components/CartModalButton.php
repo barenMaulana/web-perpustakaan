@@ -2,10 +2,15 @@
 
 namespace App\Http\Livewire\Components;
 
-use App\Models\Book;
 use Illuminate\Http\Request;
 use Livewire\Component;
 use Illuminate\Support\Arr;
+use App\Models\Transaction;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use App\Models\Book;
+use App\Models\BorrowBook;
+use Illuminate\Support\Facades\Auth;
 
 class CartModalButton extends Component
 {
@@ -16,7 +21,7 @@ class CartModalButton extends Component
 
     public function render()
     {
-        $this->borrow_date = date("M - d - Y");
+        $this->borrow_date = date("Y/m/d");
         if(session('bookID')){
             $this->cartBooks = Book::whereIn('id',session('bookID'))->get();
         }
@@ -52,5 +57,48 @@ class CartModalButton extends Component
 
         // refresh
         $this->render();
+    }
+
+    public function store(Request $request,$inputs)
+    {
+        // validation
+        for ($i=0; $i < count($inputs); $i++) { 
+            if($inputs['return_date'.$i] == "") {
+                session()->flash('errMessage','isi tanggal pengembalian setiap buku');
+                return;
+            }
+        }
+
+        DB::beginTransaction();
+        try {
+            $transaction_code = Str::upper(Str::random(10).rand(1,10));
+            // store transaction data
+            Transaction::create([
+                'member_id' => Auth::user()->id,
+                'borrow_book_id' => json_encode(session('bookID')),
+                'borrow_date' => $this->borrow_date,
+                'transaction_code' => $transaction_code,
+            ]);
+
+            $transaction = Transaction::where('transaction_code', $transaction_code)->first();
+
+            // store borrow books data
+            for ($i=0; $i < count($inputs); $i++) { 
+                BorrowBook::create([
+                    'transaction_id' => $transaction->id,
+                    'book_id' => session('bookID')[$i],
+                    'return_date' => $inputs['return_date'.$i]
+                ]);
+            }
+
+            $request->session()->forget('bookID');
+            DB::commit();
+        } catch (\Exception $e) {
+            dd($e);
+            session()->flash('errMessage','Gagal melakukan checkout, coba lagi atau segera hubungi pustakawan');
+            DB::rollback();
+            return;
+        }
+        return redirect()->to('/transactions');
     }
 }

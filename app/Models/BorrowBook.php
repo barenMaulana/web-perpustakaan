@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class BorrowBook extends Model
 {
     use HasFactory;
+
+    protected $table = "borrow_books";
+
+    protected $fillable = [
+        'transaction_id',
+        'book_id',
+        'return_date',
+        'renewal_date',
+        'actual_return',
+        'sanction'
+    ];
 }

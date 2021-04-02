@@ -6,11 +6,8 @@
             </div>
             <span class="hidden sm:inline-block sm:align-top sm:h-screen"></span>​
             <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-full lg:max-w-2xl sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-                <form>
+                <form wire:submit.prevent="store(Object.fromEntries(new FormData($event.target)))">
                     <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        {{-- <h1 class="text-center font-black text-gray-500 text-2xl my-2">
-                            <img src="{{asset('logo.png')}}" width="60" class="mx-auto">
-                        </h1> --}}
                         @forelse ($cartBooks as $key => $book)
                             <div class="flex my-10 lg:my-4">
                                 <div class="w-4/12 lg:w-1/5">
@@ -26,7 +23,7 @@
                                     </div>
                                     <div class="flex justify-between w-full lg:w-full my-2 items-center">
                                         <span class="text-sm text-gray-600 font-light">Tanggal Kembali</span>
-                                        <input wire:model="return_date" type="date" class="border border-blue-300 rounded-xl h-10">
+                                        <input type="date" class="border border-blue-300 rounded-xl h-10" name="return_date{{$key}}" required>
                                     </div>
                                     <div class="flex justify-between w-full lg:w-full my-2 items-center">
                                         <span class="text-sm text-gray-600 font-light"></span>
@@ -42,16 +39,17 @@
                             
                         @endforelse
                     </div>
+                    @include('livewire/components/session-message')
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                            <button type="button" wire:click.prevent="store()" class="inline-flex justify-center w-full bg-gradient-to-r from-indigo-400 to-blue-500 rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+                            <button class="inline-flex justify-center w-full bg-gradient-to-r from-indigo-400 to-blue-500 rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm transition ease-in-out duration-150 sm:text-sm sm:leading-5">
                                 Pinjam
                             </button> 
                         </span>
                         <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
-                            <div wire:click="closeModal()" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5 cursor-pointer">
+                            <button type="button" wire:click="closeModal()" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5 cursor-pointer">
                                 Cancel
-                            </div>
+                            </button>
                         </span>
                     </form>
                 </div>

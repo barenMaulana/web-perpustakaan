@@ -52,19 +52,19 @@
                 </ul>
                 @guest                    
                     <a href="{{url('/login')}}" id="navAction"
-                        class="gradient2 mx-auto lg:mx-1 text-gray-80 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow opacity-80">
+                        class="mx-auto lg:mx-1 text-gray-80 bg-white text-blue-500 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow">
                         Login
                     </a>
                     &nbsp;
                     <a href="{{url('/register')}}" id="navAction"
-                        class="gradient2 mx-auto lg:mx-1 text-gray-80 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow opacity-80">
+                        class="mx-auto lg:mx-1 text-gray-80 bg-white text-blue-500 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow">
                         Register
                     </a>
                 @endguest
                 @auth
                     @livewire('components.cart-modal-button')
                     <a href="{{url('/dashboard')}}" id="navAction"
-                        class="gradient2 mx-auto lg:mx-1 text-gray-80 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow opacity-80 font-black text-gray-700">
+                        class="mx-auto lg:mx-1 text-gray-80 bg-white text-blue-500 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow font-black text-gray-700">
                         Dashboard
                     </a>
                 @endauth
