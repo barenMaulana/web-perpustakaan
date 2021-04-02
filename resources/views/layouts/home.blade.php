@@ -20,7 +20,7 @@
     <nav id="header" class="w-full z-30 top-0 text-white py-1">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-4">
             <div class="pl-4 flex items-center">
-                <a class="no-underline hover:no-underline font-bold text-2xl lg:text-2xl flex items-center bg" href="#">
+                <a href="{{url('/')}}" class="no-underline hover:no-underline font-bold text-2xl lg:text-2xl flex items-center bg" href="#">
                     <img src="{{asset('logo.png')}}" alt="" width="50" style="margin-top: -10px;">
                     Books
                 </a>
@@ -62,9 +62,10 @@
                     </a>
                 @endguest
                 @auth
+                    @livewire('components.cart-modal-button')
                     <a href="{{url('/dashboard')}}" id="navAction"
-                        class="gradient2 mx-auto lg:mx-1 text-gray-80 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow opacity-80">
-                        Register
+                        class="gradient2 mx-auto lg:mx-1 text-gray-80 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow opacity-80 font-black text-gray-700">
+                        Dashboard
                     </a>
                 @endauth
 

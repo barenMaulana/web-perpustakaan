@@ -4,7 +4,6 @@
         background-image: linear-gradient(-225deg, #6a38f2 0%, #24d7dd 100%);
     }
 
-    button,
     .gradient2 {
         background-color: #86e3f3;
         background-image: linear-gradient(315deg, #69ffd2 0%, #4bdeff 74%);
