@@ -7,9 +7,9 @@ use Livewire\Component;
 use Illuminate\Support\Arr;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 use App\Models\Book;
 use App\Models\BorrowBook;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class CartModalButton extends Component
@@ -17,7 +17,8 @@ class CartModalButton extends Component
     public  $modal = false,
             $cartBooks = [],
             $borrow_date,
-            $return_date;
+            $return_date,
+            $transaction;
 
     public function render()
     {
@@ -61,6 +62,11 @@ class CartModalButton extends Component
 
     public function store(Request $request,$inputs)
     {
+        if(count($inputs) == 0){
+            session()->flash('errMessage','pilih buku terlebih dahulu');
+            return;
+        }
+
         // validation
         for ($i=0; $i < count($inputs); $i++) { 
             if($inputs['return_date'.$i] == "") {
@@ -80,14 +86,22 @@ class CartModalButton extends Component
                 'transaction_code' => $transaction_code,
             ]);
 
-            $transaction = Transaction::where('transaction_code', $transaction_code)->first();
+            $this->transaction = Transaction::where('transaction_code', $transaction_code)->first();
 
             // store borrow books data
             for ($i=0; $i < count($inputs); $i++) { 
                 BorrowBook::create([
-                    'transaction_id' => $transaction->id,
+                    'transaction_id' => $this->transaction->id,
                     'book_id' => session('bookID')[$i],
                     'return_date' => $inputs['return_date'.$i]
+                ]);
+            }
+
+            // update stock of book
+            $books = Book::whereIn('id', json_decode($this->transaction->borrow_book_id))->get();
+            for ($i=0; $i <count($books) ; $i++) { 
+                Book::find($books[$i]->id)->update([
+                    'amount' => $books[$i]->amount -= 1
                 ]);
             }
 
@@ -99,6 +113,6 @@ class CartModalButton extends Component
             DB::rollback();
             return;
         }
-        return redirect()->to('/transactions');
+        return redirect()->to('transactions/'.$this->transaction->id);
     }
 }

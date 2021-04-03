@@ -19,4 +19,9 @@ class BorrowBook extends Model
         'actual_return',
         'sanction'
     ];
+
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class);
+    }
 }

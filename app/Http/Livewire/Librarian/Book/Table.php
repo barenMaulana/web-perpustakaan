@@ -125,7 +125,6 @@ protected $updatesQueryString = [
             }
         }
 
-
         $this->validate([
             'title' => 'required|string',
             'isbn' => 'required',

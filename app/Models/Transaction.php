@@ -17,4 +17,9 @@ class Transaction extends Model
         'status',
         'transaction_code'
     ];
+
+    public function borrow_books()
+    {
+        return $this->hasMany(BorrowBook::class);
+    }
 }
