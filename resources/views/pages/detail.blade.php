@@ -45,6 +45,10 @@
                     <h1 class="text-xl text-gray-700 text-light my-2">Detail information</h1>
                     <ul class="w-full lg:w-4/5 text-gray-800">
                         <li class="flex justify-between">
+                            <span>Author</span>
+                            <span>{{$book->author}}</span>
+                        </li>
+                        <li class="flex justify-between">
                             <span>ISBN</span>
                             <span>{{$book->isbn}}</span>
                         </li>
