@@ -14,4 +14,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/books',[BookController::Class,'index'])->name('books');
     Route::get('/transactions',[TransactionController::Class,'index'])->name('transactions');
     Route::get('/transactions/{id}',[TransactionController::Class,'show']);
+    Route::get('/transactions/return-book/{id}',[TransactionController::Class,'returnBook']);
 });

@@ -14,7 +14,8 @@ class Details extends Component
     public  $transaction,
             $books,
             $transaction_id,
-            $isDelete = false;
+            $isDelete = false,
+            $inactive = false;
 
     public function mount($id)
     {
@@ -24,6 +25,11 @@ class Details extends Component
     public function render()
     {
         $this->transaction = Transaction::where('id',$this->transaction_id)->with('borrow_books')->first();
+        foreach ($this->transaction->borrow_books as $key => $book) {
+            if($book->actual_return != null && $key == count($this->transaction->borrow_books) - 1){
+                Transaction::find($this->transaction_id)->update(['status' => 'inactive']);
+            }
+        }
         $this->books = Book::whereIn('id',json_decode($this->transaction->borrow_book_id))->get();
         return view('livewire.librarian.transaction.details');
     }
@@ -76,7 +82,6 @@ class Details extends Component
             }
             DB::commit();
         } catch (\Throwable $e) {
-            dd($e);
             DB::rollback();
             session()->flash('errMessage', 'transactions cannot be deleted, something is wrong');
             return;

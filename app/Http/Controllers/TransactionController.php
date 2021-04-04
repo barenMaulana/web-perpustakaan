@@ -31,4 +31,11 @@ class TransactionController extends Controller
             'transaction_id' => $id
         ]);
     }
+
+    public function returnBook($id)
+    {
+        return view('librarian.transaction.return-book', [
+            'transaction_id' => $id
+        ]);
+    }
 }

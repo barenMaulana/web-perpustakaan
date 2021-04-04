@@ -29,7 +29,7 @@
             <!-- responsive hamburger -->
             <div class="block lg:hidden pr-4">
                 <button id="nav-toggle"
-                    class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-green-500 appearance-none focus:outline-none">
+                    class="flex items-center bg-white px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-green-500 appearance-none focus:outline-none">
                     <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <title>Menu</title>
                         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
@@ -41,14 +41,6 @@
             <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 text-black p-4 lg:p-0 z-20"
                 id="nav-content">
                 <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                    <!-- <li class="mr-3">
-                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                            href="#">Ebook</a>
-                    </li>
-                    <li class="mr-3">
-                        <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                            href="#">Koleksi</a>
-                    </li> -->
                 </ul>
                 @guest                    
                     <a href="{{url('/login')}}" id="navAction"
@@ -62,11 +54,13 @@
                     </a>
                 @endguest
                 @auth
-                    @livewire('components.cart-modal-button')
-                    <a href="{{url('/dashboard')}}" id="navAction"
-                        class="mx-auto lg:mx-1 text-gray-80 bg-white text-blue-500 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow font-black text-gray-700">
-                        Dashboard
-                    </a>
+                    <div class="flex">
+                        @livewire('components.cart-modal-button')
+                        <a href="{{url('/dashboard')}}" id="navAction"
+                            class="mx-auto lg:mx-1 text-gray-80 bg-white text-blue-500 opacity-95 rounded mt-4 lg:mt-0 py-2 px-6 outline-none shadow font-black text-gray-700">
+                            Dashboard
+                        </a>
+                    </div>
                 @endauth
 
             </div>
@@ -76,7 +70,7 @@
     <!-- header -->
     <div class="container mx-auto h-48 lg:h-96">
         <div class="text-center px-3 lg:px-0 mt-20">
-            <h1 class="my-4 text-2xl md:text-3xl lg:text-5xl font-black leading-tight text-gray-300">
+            <h1 class="my-4 text-2xl md:text-3xl lg:text-5xl font-black leading-tight text-gray-100">
                 Perpustakaan
             </h1>
         </div>
@@ -100,11 +94,11 @@
                     <p class="uppercase font-extrabold text-gray-500 md:mb-6">Legal</p>
                     <ul class="list-reset mb-6">
                         <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
+                            <a href="{{url('terms-of-service')}}"
                                 class="font-light no-underline hover:underline text-gray-800 hover:text-orange-500">Terms</a>
                         </li>
                         <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                            <a href="#"
+                            <a href="{{url('privacy-policy')}}"
                                 class="font-light no-underline hover:underline text-gray-800 hover:text-orange-500">Privacy</a>
                         </li>
                     </ul>

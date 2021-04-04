@@ -3,8 +3,8 @@
         <!-- search bar -->
         <div class="flex justify-center">
             <input type="text" placeholder="Cari buku"
-                class="py-2 px-2 w-4/5 lg:w-1/2 border border-gray-200 rounded shadow-2xl h-16 z-20 outline-none font-bold"
-                style="margin-bottom: -25px;">
+                class="py-2 pl-10 pr-5 w-4/5 lg:w-1/2 border border-gray-200 rounded shadow-2xl h-16 lg:h-20 z-20 lg:text-xl text-lg outline-none font-bold text-gray-500"
+                style="margin-bottom: -36px;">
         </div>
     
         <!-- fast search -->

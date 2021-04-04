@@ -36,12 +36,12 @@ class BorrowBookButton extends Component
             });
 
             if(count($result) != 0){
-                session()->flash('errMessage','buku sudah di dalam keranjang');
+                session()->flash('errMessage','buku sudah di dalam penanda buku');
                 return;
             }
         }
         $request->session()->push('bookID',$this->bookID);
         $this->storedData = $request->session()->get('bookID');
-        session()->flash('message','Dimasukan kedalam keranjang');
+        session()->flash('message','Dimasukan kedalam penanda buku');
     }
 }

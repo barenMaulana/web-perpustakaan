@@ -4,19 +4,24 @@
             {{ __('Transaction') }}
         </h2>
     </x-slot>
+    <a href="{{url('dashboard')}}">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#636e72" width="30" class="mx-2 my-2">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
     @include('livewire.components.session-message')
     @if (Auth::user()->position == "pustakawan")
         @livewire('components.search-transaction')
     @endif
     @if (Auth::user()->position == "member")
-        <div class="my-2 mx-2 lg:flex lg:flex-wrap">
+        <div class="my-2 mx-2 lg:flex lg:flex-wrap lg:justify-center">
             @forelse ($transactions as $transaction)
             @php
                 $bgcolor = "bg-green-300";
                 if($transaction->status == "pending"){
                     $bgcolor = "bg-yellow-300";
-                }else if($transaction->status == "finish"){
-                    $bgcolor = "bg-blue-300";
+                }else if($transaction->status == "inactive"){
+                    $bgcolor = "bg-gray-300";
                 }
             @endphp
                 <article class="sm:grid grid-cols-4 bg-white shadow-sm p-7 relative lg:w-3/12 sm:p-4 rounded-lg lg:col-span-2 mx-2 my-2">

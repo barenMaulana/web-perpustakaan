@@ -7,16 +7,17 @@
       </span>
       <input wire:model="search" name="search" type="text" class="py-2 text-sm text-white bg-gray-200 rounded-md pl-10 focus:outline-none focus:bg-white focus:text-gray-900" placeholder="transaction code..." autocomplete="off">
     </div>
+    
     <div class="my-2 mx-2 lg:flex lg:flex-wrap">
         @forelse ($transactions as $transaction)
-        @php
-            $bgcolor = "bg-green-300";
-            if($transaction->status == "pending"){
-                $bgcolor = "bg-yellow-300";
-            }else if($transaction->status == "finish"){
-                $bgcolor = "bg-blue-300";
-            }
-        @endphp
+            @php
+                $bgcolor = "bg-green-300";
+                if($transaction->status == "pending"){
+                    $bgcolor = "bg-yellow-300";
+                }else if($transaction->status == "inactive"){
+                    $bgcolor = "bg-gray-300";
+                }
+            @endphp
             <article class="sm:grid grid-cols-4 bg-white shadow-sm p-7 relative lg:w-3/12 sm:p-4 rounded-lg lg:col-span-2 mx-2 my-2">
                 <div class="pt-5 self-center sm:pt-0 sm:pl-10 col-span-3">
                     <h2 class="text-gray-800 capitalize text-xl font-bold">Peminjaman {{count($transaction->borrow_books)}} buku</h2>
