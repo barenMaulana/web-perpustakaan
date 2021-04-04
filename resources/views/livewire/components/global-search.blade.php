@@ -29,7 +29,9 @@
                             Oops..buku nya lagi kosong
                         </h2>
                     @endforelse
-                
+                </div>
+                <div class="py-5">
+                    {{ $books->links() }}
                 </div>
             </div>
         </section>

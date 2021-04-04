@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class GlobalSearch extends Component
 {
-
     use WithPagination;
 
     public  $search,

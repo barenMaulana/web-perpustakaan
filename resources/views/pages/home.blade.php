@@ -43,8 +43,25 @@
                 </div>
             </div>
         </section>
+
+        <section class="flex p-10 bg-white">
+            <div class="mx-2 rounded text-white shadow-xl">
+                <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=perpusnas&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.embedmymap.com/">Embed My Map</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}.gmap_iframe {width:600px!important;height:400px!important;}</style></div>
+            </div>
+            <div class="mx-2 rounded text-gray-800">
+                <h5 class="text-xl font-bold">
+                    Perpustakaan Kementerian Pendidikan dan Kebudayaan
+                </h5>
+                <p>
+                    Perpustakaan Kementerian Pendidikan dan Kebudayaan (Kemendikbud) merupakan perpustakaan utama di lingkungan Kemendikbud yang dibuka secara resmi oleh Menteri Pendidikan Nasional pada 29 November 2004. Perpustakaan in diharapkan menjadi referensi dalam bidang pendidikan dan kebudayaan dengan menyediakan akses informasi dan pengetahuan yang lengkap, baik dalam bentuk koleksi tercetak maupun digital. <br>
+                    Telp. (021) 5707870 <br>
+                    Fax. (021) 5731228 <br>
+                    E-mail: perpustakaan@kemdikbud.go.id
+                </p>
+            </div>
+        </section>
     
-        <!-- call to action -->
+        <!-- divider -->
         <section class="w-full mx-auto text-center shadow-inner bg-gray-100 h-10 pb-5">
      
         </section>
